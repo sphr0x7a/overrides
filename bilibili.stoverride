@@ -6,9 +6,7 @@ icon: |-
   https://fastly.jsdelivr.net/gh/fmz200/wool_scripts/icons/apps/BiliBili.png
 category: |-
   ddgksf2013
-
 http:
-
   mitm:
     - "-broadcast.chat.bilibili.com"
     - "-cm.bilibili.com"
@@ -21,134 +19,120 @@ http:
     - "*.bilibili.*"
     - "grpc.biliapi.net"
     - "*biliapi.net"
-
   url-rewrite:
-# > BiliBili_哔哩哔哩_Version
+    # > Version
     - >-
       ^https?:\/\/bilibili.2025.04.02/c136 - reject-200
-# > BiliBili_哔哩哔哩_屏蔽广告浮窗
+    # > 屏蔽广告浮窗
     - >-
       ^https?:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive - reject-dict
-# > BiliBili_哔哩哔哩_Material_Ad
+    # > Material_Ad
     - >-
       ^https?:\/\/api\.bilibili\.com\/x\/vip\/ads\/material\/report - reject-dict
-# > BiliBili_哔哩哔哩_小卡片广告
+    # > 小卡片广告
     - >-
       ^https://api.bilibili.com/pgc/season/player/cards - reject-dict
-# > BiliBili_哔哩哔哩_点击追番Card
+    # > 点击追番Card
     - >-
       ^https?:\/\/api\.bilibili\.com\/pgc\/season\/player\/ogv\/cards - reject-dict
-# > BiliBili_哔哩哔哩_应用开屏去广告
+    # > 应用开屏去广告
     - >-
       ^https://app.bilibili.com/x/v2/splash/show - reject-dict
-# > BiliBili_哔哩哔哩_漫画去广告
+    # > 漫画去广告
     - >-
       ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash|GetActivityTab) - reject-dict
-# > BiliBili_哔哩哔哩_填词
+    # > 填词
     - >-
       ^https?:\/\/app\.bilibili\.com\/x\/v\d\/search\/defaultwords - reject-dict
-# > BiliBili_哔哩哔哩_屏蔽DefaultWord
+    # > 屏蔽DefaultWord
     - >-
       ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/Default - reject-200
-
   script:
-# > BiliBili_哔哩哔哩_视频播放下方商品推广
+    # > 视频播放下方商品推广
     - match: ^https?:\/\/api\.bili(api|bili)\.(net|com)\/pgc\/season\/app\/related\/recommend\?
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_屏蔽直播间商品广告浮窗[还有一个域名]@ddgksf2013
+    # > 屏蔽直播间商品广告浮窗[还有一个域名]
     - match: ^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v\d\/ecommerce-user\/get_shopping_info\?
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_直播去广告@bm7
+    # > 直播去广告
     - match: ^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_应用开屏广告预加载@yjqiang
+    # > 应用开屏广告预加载
     - match: ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_屏蔽直播页顶部轮播图@ddgksf2013
+    # > 屏蔽直播页顶部轮播图
     - match: ^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-interface\/v2\/index\/feed
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_推荐去广告@ddgksf2013
+    # > 推荐去广告
     - match: ^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_追番去广告@ddgksf2013
+    # > 追番去广告
     - match: ^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/bangumi
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_观影页面去广告@ddgksf2013
+    # > 观影页面去广告
     - match: ^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/cinema\/tab\?
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_标签页处理@ddgksf2013
+    # > 标签页处理
     - match: ^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_我的页面处理@ddgksf2013
+    # > 我的页面处理
     - match: ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_屏蔽首页右上活动@ddgksf2013
+    # > 屏蔽首页右上活动
     - match: ^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# > BiliBili_哔哩哔哩_热搜发现@ddgksf2013
+    # > 热搜发现
     - match: ^https://app.bilibili.com/x/v2/search/square
       name: "bilibili.ads_25"
       type: response
       require-body: true
       max-size: -1
       timeout: 60
-
-# ～ BiliBili_哔哩哔哩_搜索去广告@BiliUniverse
+    # > _搜索去广告
     - match: ^https?:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$
       name: "response.bundle_49"
       type: response
@@ -156,8 +140,7 @@ http:
       max-size: -1
       binary-mode: true
       timeout: 60
-
-# ～ BiliBili_哔哩哔哩_交互点赞投票弹幕及会员弹幕@BiliUniverse
+    # > _交互点赞投票弹幕及会员弹幕
     - match: ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/(DmView|DmSegMobile)
       name: "response.bundle_49"
       type: response
@@ -165,8 +148,7 @@ http:
       max-size: -1
       binary-mode: true
       timeout: 60
-
-# ～ BiliBili_哔哩哔哩_青少年弹窗@BiliUniverse
+    # > _青少年弹窗
     - match: ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus
       name: "response.bundle_49"
       type: response
@@ -174,8 +156,7 @@ http:
       max-size: -1
       binary-mode: true
       timeout: 60
-
-# ～ BiliBili_哔哩哔哩_UP主推荐广告[适配ipad端]@BiliUniverse
+    # > _UP主推荐广告[适配ipad端]
     - match: ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|TFInfo)$
       name: "response.bundle_49"
       type: response
@@ -183,8 +164,7 @@ http:
       max-size: -1
       binary-mode: true
       timeout: 60
-
-# ～ BiliBili_哔哩哔哩_动态综合页及视频页去广告@BiliUniverse
+    # > _动态综合页及视频页去广告
     - match: ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/Dyn(All|Video)$
       name: "response.bundle_49"
       type: response
@@ -192,7 +172,6 @@ http:
       max-size: -1
       binary-mode: true
       timeout: 60
-
 script-providers:
   "bilibili.ads_25":
     url: https://ddgksf2013.top/scripts/bilibili.ads.js
