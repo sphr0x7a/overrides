@@ -1,0 +1,33 @@
+#SUBSCRIBED http://script.hub/file/_start_/http://local.text/_end_/local.stoverride?type=surge-module&target=stash-stoverride&del=true&jqEnabled=true&localtext=%23!name%3DPornhub%20%E5%8E%BB%E5%BB%A3%E5%91%8A%0A%23!desc%3D%E9%81%8E%E6%BF%BE%20Pornhub%20%E5%8E%BB%E5%BB%A3%E5%91%8A%0A%23!category%3D%E5%8E%BB%E5%BB%A3%E5%91%8A%0A%23!icon%3D%20https%3A%2F%2Fraw.githubusercontent.com%2Ffmz200%2Fwool_scripts%2Fmain%2Ficons%2Fapps%2FPornhub.png%0A%0A%5BMap%20Local%5D%0A%5Ehttps%3F%3A%5C%2F%5C%2F(cn%7Cwww)%5C.pornhub%5C.com%5C%2F_xa%5C%2Fads%20data-type%3Dtext%20data%3D%22%7B%7D%22%20status-code%3D200%20header%3D%22Content-Type%3Aapplication%2Fjson%22%0A%0A%5BScript%5D%0Apornhub.ads%20%3D%20type%3Dhttp-response%2C%20pattern%3D%5Ehttps%3F%3A%2F%5C%2F(cn%7Cwww)%5C.pornhub%5C.com%5C%2F(%3F!(.*(api%7Clogin%7Ccdn-cgi%7Cverify%7Cauth%7Ccaptch%7C(%5C.(js%7Ccss%7Cjpg%7Cjpeg%7Cpng%7Cwebp%7Cgif%7Czip%7Cwoff%7Cwoff2%7Cm3u8%7Cmp4%7Cmov%7Cm4v%7Cavi%7Cmkv%7Cflv%7Crmvb%7Cwmv%7Crm%7Casf%7Casx%7Cmp3%7Cjson%7Cico%7Cotf%7Cttf)))))%2C%20script-path%3Dhttps%3A%2F%2Fddgksf2013.top%2Fscripts%2Fpornhub.ads.js%2C%20requires-body%3Dtrue%2C%20max-size%3D-1%2C%20timeout%3D60%0A%0A%5BMITM%5D%0Ahostname%20%3D%20%25APPEND%25%20cn.pornhub.com%2C%20www.pornhub.com
+name: |-
+  Pornhub 去廣告
+desc: |-
+  過濾 Pornhub 去廣告
+icon: |-
+  https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/Pornhub.png
+category: |-
+  去廣告
+
+http:
+
+  mitm:
+    - "cn.pornhub.com"
+    - "www.pornhub.com"
+
+  url-rewrite:
+    - >-
+      ^https?:\/\/(cn|www)\.pornhub\.com\/_xa\/ads - reject-dict
+
+  script:
+    - match: ^https?:/\/(cn|www)\.pornhub\.com\/(?!(.*(api|login|cdn-cgi|verify|auth|captch|(\.(js|css|jpg|jpeg|png|webp|gif|zip|woff|woff2|m3u8|mp4|mov|m4v|avi|mkv|flv|rmvb|wmv|rm|asf|asx|mp3|json|ico|otf|ttf)))))
+      name: "pornhub.ads_7"
+      type: response
+      require-body: true
+      max-size: -1
+      timeout: 60
+
+script-providers:
+  "pornhub.ads_7":
+    url: https://ddgksf2013.top/scripts/pornhub.ads.js
+    interval: 86400
+
