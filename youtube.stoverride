@@ -6,16 +6,13 @@ icon: |-
   https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/YouTube.png
 category: |-
   去廣告
-
 http:
-
   mitm:
     - "-redirector*.googlevideo.com"
     - "*.googlevideo.com"
     - "www.youtube.com"
     - "s.youtube.com"
     - "youtubei.googleapis.com"
-
   url-rewrite:
     - >-
       (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
@@ -27,7 +24,6 @@ http:
       ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
     - >-
       ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
-
   script:
     - match: ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
       name: "youtube.response_12"
@@ -36,7 +32,6 @@ http:
       max-size: -1
       binary-mode: true
       timeout: 60
-
 script-providers:
   "youtube.response_12":
     url: https://raw.githubusercontent.com/Aioneas/Surge/main/Script/youtube.response.js
