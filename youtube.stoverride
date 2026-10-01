@@ -35,4 +35,4 @@ http:
 script-providers:
   "youtube.response_12":
     url: https://raw.githubusercontent.com/Aioneas/Surge/main/Script/youtube.response.js
-    interval: 259200
+    interval: 86400
