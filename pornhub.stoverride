@@ -3,9 +3,9 @@ name: |-
 desc: |-
   過濾 Pornhub 去廣告
 icon: |-
-  https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/Pornhub.png
+  https://fastly.jsdelivr.net/gh/fmz200/wool_scripts/icons/apps/Pornhub.png
 category: |-
-  去廣告
+  ddgksf2013
 http:
   mitm:
     - "cn.pornhub.com"
@@ -24,4 +24,3 @@ script-providers:
   "pornhub.ads_7":
     url: https://ddgksf2013.top/scripts/pornhub.ads.js
     interval: 86400
-
