@@ -5,7 +5,7 @@ desc: |-
 icon: |-
   https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/MojiWeather.png
 category: |-
-  去廣告
+  解鎖
 http:
   mitm:
     - "*.api.moji.com"
